@@ -47,8 +47,26 @@ Ensure Docker is installed and running on your machine. Start the Docker contain
 sh
 docker-compose up
 ```
+### While docker is running, Open a new prompt and follow next steps.
+
+### Step 4: Python Environment Setup [Optional]
+Create and activate a Python virtual environment, then install the required dependencies:
 ```
-Step 4: Configure AWS CLI
+sh
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```
+### IFf you want to exit virtual environment use
+```
+deactivate
+```
+#### If you are unable to work in virtual environment just type deactivate and move to next steps.
+### Next
+```
+pip install -r requirements.txt
+```
+```
+Step 5: Configure AWS CLI
 Configure AWS CLI to use LocalStack:
 
 sh
@@ -60,15 +78,6 @@ AWS Access Key ID: test
 AWS Secret Access Key: test
 Default region name: us-east-1
 Default output format: json
-```
-```
-Step 5: Python Environment Setup
-Create and activate a Python virtual environment, then install the required dependencies:
-
-sh
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-pip install -r requirements.txt
 ```
 Step 6: Create SQS Queue
 Create an SQS queue using AWS CLI:
