@@ -46,7 +46,7 @@ Clone the repository to your local machine:
 
 sh
 Copy code
-git clone https://github.com/yourusername/fetch-rewards-data-engineering-takehome.git
+git clone [https://github.com/yourusername/fetch-rewards-data-engineering-takehome.git](https://github.com/sdami002/fetch-take-home-sasi.git)
 cd fetch-rewards-data-engineering-takehome
 Step 2: Set Up Docker and LocalStack
 Ensure Docker is installed and running on your machine. Start the Docker containers for LocalStack and PostgreSQL:
