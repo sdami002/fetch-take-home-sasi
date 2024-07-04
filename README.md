@@ -1,38 +1,15 @@
-<<<<<<< HEAD
-# fetch-rewards-data-engineering-takehome
-=======
-# Fetch Rewards Data Engineering Takehome
+#Fetch Rewards Data Engineering Takehome
+###This project is a data engineering task that processes messages from an SQS queue, masks PII data, and loads the data into a PostgreSQL database using Docker, LocalStack, and Python.
 
-This project is a data engineering task that processes messages from an SQS queue, masks PII data, and loads the data into a PostgreSQL database using Docker, LocalStack, and Python.
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Project Structure](#project-structure)
-- [Setup Instructions](#setup-instructions)
-  - [Step 1: Clone the Repository](#step-1-clone-the-repository)
-  - [Step 2: Set Up Docker and LocalStack](#step-2-set-up-docker-and-localstack)
-  - [Step 3: Configure AWS CLI](#step-3-configure-aws-cli)
-  - [Step 4: Create SQS Queue](#step-4-create-sqs-queue)
-  - [Step 5: Python Environment Setup](#step-5-python-environment-setup)
-  - [Step 6: Create PostgreSQL Table](#step-6-create-postgresql-table)
-  - [Step 7: Send a Test Message to SQS](#step-7-send-a-test-message-to-sqs)
-  - [Step 8: Run the Main Script](#step-8-run-the-main-script)
-  - [Step 9: Verify Data in PostgreSQL](#step-9-verify-data-in-postgresql)
-- [Project Files](#project-files)
-- [License](#license)
-
-## Prerequisites
-
-- Docker
-- Docker Compose
-- Python 3.6 or higher
-- AWS CLI
-- PostgreSQL (for local development)
-
-## Project Structure
-
-```plaintext
+--Prerequisites
+Docker
+Docker Compose
+Python 3.6 or higher
+AWS CLI
+PostgreSQL (for local development)
+Project Structure
+plaintext
+Copy code
 fetch-rewards-data-engineering-takehome/
 ├── .gitignore
 ├── docker-compose.yaml
@@ -44,79 +21,26 @@ fetch-rewards-data-engineering-takehome/
 ├── main.py
 └── README.md
 Setup Instructions
-Step 1: Clone the Repository
+Step 1: Install Required Software
+Docker: Install Docker from the official Docker website.
+Docker Compose: Docker Compose is included with Docker Desktop.
+Python: Install Python 3.6 or higher from the official Python website.
+AWS CLI: Install the AWS CLI from the official AWS website.
+PostgreSQL: Install PostgreSQL from the official PostgreSQL website.
+Step 2: Clone the Repository
 Clone the repository to your local machine:
 
 sh
 Copy code
-git clone https://github.com/sdami002/fetch-take-home-sasi.git
-cd fetch-take-home-sasi
-Step 2: Set Up Docker and LocalStack
-Setup Instructions
-Step 1: Clone the Repository
-Clone the repository to your local machine: no need to break like this need completetluy in  continues
-ChatGPT
-markdown
-Copy code
-# Fetch Rewards Data Engineering Takehome
-
-This project is a data engineering task that processes messages from an SQS queue, masks PII data, and loads the data into a PostgreSQL database using Docker, LocalStack, and Python.
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Project Structure](#project-structure)
-- [Setup Instructions](#setup-instructions)
-  - [Step 1: Clone the Repository](#step-1-clone-the-repository)
-  - [Step 2: Set Up Docker and LocalStack](#step-2-set-up-docker-and-localstack)
-  - [Step 3: Configure AWS CLI](#step-3-configure-aws-cli)
-  - [Step 4: Create SQS Queue](#step-4-create-sqs-queue)
-  - [Step 5: Python Environment Setup](#step-5-python-environment-setup)
-  - [Step 6: Create PostgreSQL Table](#step-6-create-postgresql-table)
-  - [Step 7: Send a Test Message to SQS](#step-7-send-a-test-message-to-sqs)
-  - [Step 8: Run the Main Script](#step-8-run-the-main-script)
-  - [Step 9: Verify Data in PostgreSQL](#step-9-verify-data-in-postgresql)
-- [Project Files](#project-files)
-- [License](#license)
-
-## Prerequisites
-
-- Docker
-- Docker Compose
-- Python 3.6 or higher
-- AWS CLI
-- PostgreSQL (for local development)
-
-## Project Structure
-
-fetch-rewards-data-engineering-takehome/
-├── .gitignore
-├── docker-compose.yaml
-├── requirements.txt
-├── message.json
-├── sqs_reader.py
-├── data_transformer.py
-├── db_loader.py
-├── main.py
-└── README.md
-
-bash
-Copy code
-
-## Setup Instructions
-
-### Step 1: Clone the Repository
-Clone the repository to your local machine:
-```sh
 git clone https://github.com/yourusername/fetch-rewards-data-engineering-takehome.git
 cd fetch-rewards-data-engineering-takehome
-Step 2: Set Up Docker and LocalStack
+Step 3: Set Up Docker and LocalStack
 Ensure Docker is installed and running on your machine. Start the Docker containers for LocalStack and PostgreSQL:
 
 sh
 Copy code
 docker-compose up
-Step 3: Configure AWS CLI
+Step 4: Configure AWS CLI
 Configure AWS CLI to use LocalStack:
 
 sh
@@ -128,13 +52,13 @@ AWS Access Key ID: test
 AWS Secret Access Key: test
 Default region name: us-east-1
 Default output format: json
-Step 4: Create SQS Queue
+Step 5: Create SQS Queue
 Create an SQS queue using AWS CLI:
 
 sh
 Copy code
 awslocal sqs create-queue --queue-name login-queue
-Step 5: Python Environment Setup
+Step 6: Python Environment Setup
 Create and activate a Python virtual environment, then install the required dependencies:
 
 sh
@@ -142,7 +66,7 @@ Copy code
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
-Step 6: Create PostgreSQL Table
+Step 7: Create PostgreSQL Table
 Connect to your PostgreSQL database and create the user_logins table:
 
 sh
@@ -161,7 +85,7 @@ CREATE TABLE user_logins (
     app_version INTEGER,
     create_date DATE
 );
-Step 7: Send a Test Message to SQS
+Step 8: Send a Test Message to SQS
 Create a message.json file with the following content:
 
 json
@@ -180,13 +104,13 @@ Send the test message to the SQS queue:
 sh
 Copy code
 awslocal sqs send-message --queue-url http://localhost:4566/000000000000/login-queue --message-body file://message.json
-Step 8: Run the Main Script
+Step 9: Run the Main Script
 Run the ETL process:
 
 sh
 Copy code
 python main.py
-Step 9: Verify Data in PostgreSQL
+Step 10: Verify Data in PostgreSQL
 Connect to PostgreSQL and query the user_logins table:
 
 sh
@@ -205,5 +129,4 @@ sqs_reader.py: Script to read messages from the SQS queue.
 data_transformer.py: Script to mask PII data.
 db_loader.py: Script to load data into the PostgreSQL database.
 main.py: Main script to orchestrate the ETL process.
-README.md: Project documentation.
->>>>>>> 27cefa7f35108c5fb97ee743c687576d002e4a6d
+README.md: Project documentation
