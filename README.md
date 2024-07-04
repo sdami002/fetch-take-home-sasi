@@ -32,27 +32,30 @@ Python: Install Python 3.6 or higher from the official Python website.
 AWS CLI: Install the AWS CLI from the official AWS website.
 PostgreSQL: Install PostgreSQL from the official PostgreSQL website.
 ```
-```
+
 Step 2: Clone the Repository
 Clone the repository to your local machine:
 
 sh
+```
 git clone https://github.com/sdami002/fetch-take-home-sasi.git
 cd fetch-take-home-sasi
 ```
-```
+
 Step 3: Set Up Docker and LocalStack
 Ensure Docker is installed and running on your machine. Start the Docker containers for LocalStack and PostgreSQL:
 
 sh
+```
 docker-compose up
 ```
 ### While docker is running, Open a new prompt and follow next steps.
 
 ### Step 4: Python Environment Setup [Optional]
 Create and activate a Python virtual environment, then install the required dependencies:
-```
+
 sh
+```
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 ```
