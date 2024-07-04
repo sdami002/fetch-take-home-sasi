@@ -11,7 +11,7 @@
 
 ## Project Structure
 
-```plaintext
+``` plaintext
 fetch-rewards-data-engineering-takehome/
 ├── .gitignore
 ├── docker-compose.yaml
@@ -21,14 +21,18 @@ fetch-rewards-data-engineering-takehome/
 ├── data_transformer.py
 ├── db_loader.py
 ├── main.py
-└── README.md ```
-Setup Instructions
+└── README.md
+```
+## Setup Instructions
+```
 Step 1: Install Required Software
 Docker: Install Docker from the official Docker website.
 Docker Compose: Docker Compose is included with Docker Desktop.
 Python: Install Python 3.6 or higher from the official Python website.
 AWS CLI: Install the AWS CLI from the official AWS website.
 PostgreSQL: Install PostgreSQL from the official PostgreSQL website.
+```
+```
 Step 2: Clone the Repository
 Clone the repository to your local machine:
 
@@ -36,6 +40,7 @@ sh
 Copy code
 git clone https://github.com/yourusername/fetch-rewards-data-engineering-takehome.git
 cd fetch-rewards-data-engineering-takehome
+```
 Step 3: Set Up Docker and LocalStack
 Ensure Docker is installed and running on your machine. Start the Docker containers for LocalStack and PostgreSQL:
 
