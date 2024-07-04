@@ -37,21 +37,22 @@ Step 2: Clone the Repository
 Clone the repository to your local machine:
 
 sh
-Copy code
 git clone https://github.com/sdami002/fetch-take-home-sasi.git
 cd fetch-take-home-sasi
+```
 ```
 Step 3: Set Up Docker and LocalStack
 Ensure Docker is installed and running on your machine. Start the Docker containers for LocalStack and PostgreSQL:
 
 sh
-Copy code
 docker-compose up
+```
+```
 Step 4: Configure AWS CLI
 Configure AWS CLI to use LocalStack:
 
 sh
-Copy code
+
 aws configure --profile localstack
 Use the following details:
 
@@ -59,30 +60,34 @@ AWS Access Key ID: test
 AWS Secret Access Key: test
 Default region name: us-east-1
 Default output format: json
-Step 5: Create SQS Queue
-Create an SQS queue using AWS CLI:
-
-sh
-Copy code
-awslocal sqs create-queue --queue-name login-queue
-Step 6: Python Environment Setup
+```
+```
+Step 5: Python Environment Setup
 Create and activate a Python virtual environment, then install the required dependencies:
 
 sh
-Copy code
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
+```
+Step 6: Create SQS Queue
+Create an SQS queue using AWS CLI:
+
+sh
+
+awslocal sqs create-queue --queue-name login-queue
+```
+```
 Step 7: Create PostgreSQL Table
 Connect to your PostgreSQL database and create the user_logins table:
 
 sh
-Copy code
+
 psql -d postgres -U postgres -p 5432 -h localhost -W
 Run the following SQL command:
 
 sql
-Copy code
+
 CREATE TABLE user_logins (
     user_id VARCHAR(128),
     device_type VARCHAR(32),
@@ -92,11 +97,13 @@ CREATE TABLE user_logins (
     app_version INTEGER,
     create_date DATE
 );
+```
+```
 Step 8: Send a Test Message to SQS
 Create a message.json file with the following content:
 
 json
-Copy code
+
 {
     "user_id": "123",
     "device_id": "device123",
@@ -109,25 +116,31 @@ Copy code
 Send the test message to the SQS queue:
 
 sh
-Copy code
+
 awslocal sqs send-message --queue-url http://localhost:4566/000000000000/login-queue --message-body file://message.json
+```
+```
 Step 9: Run the Main Script
 Run the ETL process:
 
 sh
-Copy code
+
 python main.py
+```
+```
 Step 10: Verify Data in PostgreSQL
 Connect to PostgreSQL and query the user_logins table:
 
 sh
-Copy code
+
 psql -d postgres -U postgres -p 5432 -h localhost -W
 Run the following SQL command:
 
 sql
-Copy code
+
 SELECT * FROM user_logins;
+
+```
 Project Files
 docker-compose.yaml: Docker Compose configuration file for setting up LocalStack and PostgreSQL.
 requirements.txt: Python dependencies file.
