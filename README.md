@@ -46,8 +46,8 @@ Clone the repository to your local machine:
 
 sh
 Copy code
-git clone https://github.com/yourusername/fetch-rewards-data-engineering-takehome.git
-cd fetch-rewards-data-engineering-takehome
+git clone https://github.com/sdami002/fetch-take-home-sasi.git
+cd fetch-take-home-sasi
 Step 2: Set Up Docker and LocalStack
 Setup Instructions
 Step 1: Clone the Repository
