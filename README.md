@@ -38,8 +38,8 @@ Clone the repository to your local machine:
 
 sh
 Copy code
-git clone https://github.com/yourusername/fetch-rewards-data-engineering-takehome.git
-cd fetch-rewards-data-engineering-takehome
+git clone https://github.com/sdami002/fetch-take-home-sasi.git
+cd fetch-take-home-sasi
 ```
 Step 3: Set Up Docker and LocalStack
 Ensure Docker is installed and running on your machine. Start the Docker containers for LocalStack and PostgreSQL:
