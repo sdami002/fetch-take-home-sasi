@@ -65,39 +65,41 @@ deactivate
 ```
 pip install -r requirements.txt
 ```
-```
+
 Step 5: Configure AWS CLI
 Configure AWS CLI to use LocalStack:
 
 sh
-
+```
 aws configure --profile localstack
+```
 Use the following details:
-
+```
 AWS Access Key ID: test
 AWS Secret Access Key: test
 Default region name: us-east-1
 Default output format: json
 ```
-```
+
 Step 6: Create SQS Queue
 Create an SQS queue using AWS CLI:
 
 sh
-
+```
 awslocal sqs create-queue --queue-name login-queue
 ```
-```
+
 Step 7: Create PostgreSQL Table
 Connect to your PostgreSQL database and create the user_logins table:
 
 sh
-
+```
 psql -d postgres -U postgres -p 5432 -h localhost -W
+```
 Run the following SQL command:
 
 sql
-
+```
 CREATE TABLE user_logins (
     user_id VARCHAR(128),
     device_type VARCHAR(32),
@@ -108,11 +110,12 @@ CREATE TABLE user_logins (
     create_date DATE
 );
 ```
-```
+
 Step 8: Send a Test Message to SQS
 Create a message.json file with the following content:
 
 json
+```
 
 {
     "user_id": "123",
@@ -123,33 +126,35 @@ json
     "app_version": 1,
     "create_date": "2024-07-03"
 }
+```
 Send the test message to the SQS queue:
 
 sh
-
-awslocal sqs send-message --queue-url http://localhost:4566/000000000000/login-queue --message-body file://message.json
 ```
+awslocal sqs send-message --queue-url http://localhost:4566/000000000000/login-queue --message-body file://message.json
 ```
 Step 9: Run the Main Script
 Run the ETL process:
 
 sh
-
+```
 python main.py
 ```
-```
+
 Step 10: Verify Data in PostgreSQL
 Connect to PostgreSQL and query the user_logins table:
 
 sh
-
+```
 psql -d postgres -U postgres -p 5432 -h localhost -W
+```
 Run the following SQL command:
 
 sql
-
+```
 SELECT * FROM user_logins;
 
+```
 ```
 Project Files
 docker-compose.yaml: Docker Compose configuration file for setting up LocalStack and PostgreSQL.
@@ -160,3 +165,4 @@ data_transformer.py: Script to mask PII data.
 db_loader.py: Script to load data into the PostgreSQL database.
 main.py: Main script to orchestrate the ETL process.
 README.md: Project documentation
+```
