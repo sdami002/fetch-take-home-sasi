@@ -21,7 +21,7 @@ fetch-rewards-data-engineering-takehome/
 ├── data_transformer.py
 ├── db_loader.py
 ├── main.py
-└── README.md
+└── README.md ```
 Setup Instructions
 Step 1: Install Required Software
 Docker: Install Docker from the official Docker website.
