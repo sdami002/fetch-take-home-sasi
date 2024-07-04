@@ -196,3 +196,25 @@ The masking of PII data should be deterministic, meaning the same input will alw
 The ETL process will handle message retries and error logging.
 By following above detailed steps and explanations, you should be able to complete the take-home project successfully. If you encounter any issues or have further questions, feel free to ask!
 ```
+## Decisions and Explanations
+### How will you read messages from the queue?
+```
+Messages will be read from the SQS queue using the boto3 library, which provides an easy-to-use API to interact with AWS services, including SQS. The receive_message method of the SQS client will be used to poll the queue for new messages.
+```
+### What type of data structures should be used?
+```
+The JSON data from the SQS queue will be read into Python dictionaries, which provide a flexible and efficient way to manage the data. Lists will be used to collect multiple records for batch processing.
+```
+### How will you mask the PII data so that duplicate values can be identified?
+```
+PII data such as device_id and ip will be masked using a hashing function like SHA-256. This ensures that the same input value always produces the same hashed output, making it possible to identify duplicates. The hashlib library will be used for this purpose.
+```
+
+### What will be your strategy for connecting and writing to Postgres?
+```
+The psycopg2 library will be used to connect to the PostgreSQL database and execute SQL commands. A connection will be established at the beginning of the data load process, and data will be inserted using the INSERT SQL command. The connection will be closed once all data is processed to ensure resources are freed and to maintain database integrity.
+```
+### Where and how will your application run?
+```
+The application will run inside Docker containers, which will be orchestrated using Docker Compose. This setup allows for a consistent and isolated environment that includes LocalStack for SQS and PostgreSQL for the database. The entire ETL process, including reading from the queue, transforming the data, and loading it into the database, will be handled by a Python script executed within this environment.
+```
