@@ -1,8 +1,8 @@
-#Fetch Rewards Data Engineering Takehome
-###This project is a data engineering task that processes messages from an SQS queue, masks PII data, and loads the data into a PostgreSQL database using Docker, LocalStack, and Python.
+# Fetch Rewards Data Engineering Takehome
+### This project is a data engineering task that processes messages from an SQS queue, masks PII data, and loads the data into a PostgreSQL database using Docker, LocalStack, and Python.
 
---Prerequisites
-Docker
+-- Prerequisites
+-- Docker
 Docker Compose
 Python 3.6 or higher
 AWS CLI
