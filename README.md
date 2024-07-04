@@ -166,3 +166,33 @@ db_loader.py: Script to load data into the PostgreSQL database.
 main.py: Main script to orchestrate the ETL process.
 README.md: Project documentation
 ```
+# Additional Questions
+### How would you deploy this application in production?
+```
+To deploy this application in production, I would containerize the application using Docker and deploy it on a cloud service like AWS ECS or Kubernetes. For the SQS and PostgreSQL services, I would use managed services like AWS SQS and Amazon RDS.
+```
+
+### What other components would you want to add to make this production ready?
+```
+Monitoring and Logging: Use services like AWS CloudWatch and ELK Stack for monitoring and logging.
+Error Handling: Implement robust error handling and retries for SQS message processing.
+CI/CD Pipeline: Set up a CI/CD pipeline using tools like Jenkins, GitHub Actions, or AWS CodePipeline.
+Security: Ensure all secrets and sensitive information are securely managed using AWS Secrets Manager or similar tools.
+```
+### How can this application scale with a growing dataset?
+```
+The application can scale horizontally by running multiple instances of the ETL process, which can read from the SQS queue and process messages in parallel. Using AWS SQS and Amazon RDS ensures that the messaging and database services can scale independently based on the load.
+```
+
+### How can PII be recovered later on?
+```
+To recover PII later on, you can store the mapping of original values to masked values in a secure and access-controlled database or use a reversible encryption method. Ensure that access to the mapping data is strictly controlled and audited.
+```
+
+### What are the assumptions you made?
+```
+The SQS queue and PostgreSQL database are accessible and configured correctly.
+The masking of PII data should be deterministic, meaning the same input will always produce the same masked output.
+The ETL process will handle message retries and error logging.
+By following above detailed steps and explanations, you should be able to complete the take-home project successfully. If you encounter any issues or have further questions, feel free to ask!
+```
