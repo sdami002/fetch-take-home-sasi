@@ -56,7 +56,7 @@ sh
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 ```
-### IFf you want to exit virtual environment use
+### If you want to exit virtual environment use
 ```
 deactivate
 ```
@@ -78,6 +78,7 @@ AWS Access Key ID: test
 AWS Secret Access Key: test
 Default region name: us-east-1
 Default output format: json
+```
 ```
 Step 6: Create SQS Queue
 Create an SQS queue using AWS CLI:
